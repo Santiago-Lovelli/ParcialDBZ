@@ -11,29 +11,40 @@ object juego {
 	}
 
 }
-
 object powerlsBest {
 
-	method ordenarPorAtaque(personajes) {
-		return personajes.sortBy({ personaje => personaje.ataque() })
-	}
-
 	method seleccion(personajes) {
-		return self.ordenarPorAtaque(personajes).take(16)
+		return ordenador.ordenarPor(personajes,porAtaque).take(16)
 	}
 
 }
 
 object funny {
 
-	method ordenarPorCantidadDePiezas(personajes) {
-		return personajes.sortBy({ personaje => personaje.piezas().size() })
-	}
-
 	method seleccion(personajes) {
-		return self.ordenarPorCantidadDePiezas(personajes).take(16)
+		return ordenador.ordenarPor(personajes,porCantidadDePiezas).take(16)
 	}
 
+}
+
+object porCantidadDePiezas{
+	method condicion(persona)
+	{
+		return persona.piezas().size()
+	}
+}
+
+object porAtaque{
+	method condicion(persona)
+	{
+		return persona.ataque()
+	}
+}
+
+object ordenador {
+	method ordenarPor(lista,criterio){
+		return lista.sortBy({elemento => criterio.condicion(elemento)})
+	}
 }
 
 object surprise {
