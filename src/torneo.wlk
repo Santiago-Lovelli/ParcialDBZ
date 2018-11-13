@@ -27,7 +27,7 @@ object powerlsBest {
 object funny {
 
 	method ordenarPorCantidadDePiezas(personajes) {
-		return personajes.sortBy({ personaje => personaje.ataque() })
+		return personajes.sortBy({ personaje => personaje.piezas().size() })
 	}
 
 	method seleccion(personajes) {

@@ -6,6 +6,11 @@ class Traje {
 	var porcentajeDefencivo
 	var porcentajeDeExperiencia
 	var desgaste = 0
+	var piezas = #{}
+
+	method piezas() {
+		return piezas
+	}
 
 	method danioReducido(danio) {
 		return 0
@@ -27,6 +32,12 @@ class Traje {
 
 class Comun inherits Traje {
 
+	constructor(_porcentajeDefencivo, _porcentajeDeExperiencia, _piezas) {
+		porcentajeDefencivo = _porcentajeDefencivo
+		porcentajeDeExperiencia = _porcentajeDeExperiencia
+		piezas.add(0)
+	}
+
 	override method danioReducido(danio) {
 		if (self.gastado()) {
 			return 0
@@ -38,6 +49,12 @@ class Comun inherits Traje {
 }
 
 class DeEntrenamiento inherits Traje {
+
+	constructor(_porcentajeDefencivo, _porcentajeDeExperiencia, _piezas) {
+		porcentajeDefencivo = _porcentajeDefencivo
+		porcentajeDeExperiencia = _porcentajeDeExperiencia
+		piezas.add(0)
+	}
 
 	override method experienciaAumentada(experiencia) {
 		if (self.gastado()) {
@@ -51,7 +68,11 @@ class DeEntrenamiento inherits Traje {
 
 class Modularizados inherits Traje {
 
-	var piezas = #{}
+	constructor(_porcentajeDefencivo, _porcentajeDeExperiencia, _piezas) {
+		porcentajeDefencivo = _porcentajeDefencivo
+		porcentajeDeExperiencia = _porcentajeDeExperiencia
+		piezas.addAll(_piezas)
+	}
 
 	override method gastado() {
 		return piezas.all({ pieza => pieza.gastada() })
@@ -74,7 +95,7 @@ class Modularizados inherits Traje {
 	}
 
 	method porcentajeEsperiencia() {
-		return (piezas.size() - self.piezasGastadas()) / piezas.size()
+		return (piezas.size() - self.piezasGastadas().size()) / piezas.size()
 	}
 
 	override method experienciaAumentada(experiencia) {
@@ -84,6 +105,6 @@ class Modularizados inherits Traje {
 			return experiencia + self.porcentajeEsperiencia() * experiencia
 		}
 	}
-	
 
 }
+
