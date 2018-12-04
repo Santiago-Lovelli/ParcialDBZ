@@ -32,7 +32,7 @@ class Traje {
 
 class Comun inherits Traje {
 
-	constructor(_porcentajeDefencivo, _porcentajeDeExperiencia, _piezas) {
+	constructor(_porcentajeDefencivo, _porcentajeDeExperiencia) {
 		porcentajeDefencivo = _porcentajeDefencivo
 		porcentajeDeExperiencia = _porcentajeDeExperiencia
 		piezas.add(0)
@@ -50,7 +50,7 @@ class Comun inherits Traje {
 
 class DeEntrenamiento inherits Traje {
 
-	constructor(_porcentajeDefencivo, _porcentajeDeExperiencia, _piezas) {
+	constructor(_porcentajeDefencivo, _porcentajeDeExperiencia) {
 		porcentajeDefencivo = _porcentajeDefencivo
 		porcentajeDeExperiencia = _porcentajeDeExperiencia
 		piezas.add(0)

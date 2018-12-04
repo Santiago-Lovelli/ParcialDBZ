@@ -52,7 +52,7 @@ class Saiyan inherits Guerrero {
 
 	var nivel = 0
 	var resistencia = [ 0.05, 0.07, 0.15 ]
-
+	
 	method tranformarse() {
 		nivel = (3).min(nivel + 1)
 		if (nivel < 3) {
